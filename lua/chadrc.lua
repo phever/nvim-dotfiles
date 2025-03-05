@@ -44,4 +44,12 @@ M.nvdash = {
   -- },
 }
 
+-- add custom lsps
+M.mason = {
+  pkgs = {
+    "angular-language-server",
+    "vtsls",
+  },
+}
+
 return M
