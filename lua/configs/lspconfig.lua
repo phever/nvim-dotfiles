@@ -3,8 +3,8 @@ require("nvchad.configs.lspconfig").defaults()
 
 local lspconfig = require "lspconfig"
 
--- EXAMPLE
-local servers = { "cssls", "basedpyright", "ruff", "tailwindcss", "emmet_language_server" }
+-- lspconfig default servers: https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
+local servers = { "cssls", "ruff", "tailwindcss", "emmet_language_server" }
 local nvlsp = require "nvchad.configs.lspconfig"
 
 -- lsps with default config
@@ -16,16 +16,29 @@ for _, lsp in ipairs(servers) do
   }
 end
 
--- configuring single server, example: typescript
--- lspconfig.ts_ls.setup {
---   on_attach = nvlsp.on_attach,
---   on_init = nvlsp.on_init,
---   capabilities = nvlsp.capabilities,
--- }
+-- enable Python typing inlay hints
+lspconfig.basedpyright.setup {
+  on_attach = function(client, bufnr)
+    vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+  end,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
+  settings = {
+    basedpyright = {
+      analysis = {
+        autoSearchPaths = true,
+        diagnosticMode = "openFilesOnly",
+        useLibraryCodeForTypes = true,
+      },
+    },
+  },
+}
 
+-- If "angular.json" exists
 local angular_project = vim.fs.root(0, "angular.json")
--- only enable angular if it's an angular project
+
 if angular_project then
+  -- only enable angular if it's an angular project
   lspconfig.angularls.setup {
     on_attach = nvlsp.on_attach,
     on_init = nvlsp.on_init,
@@ -34,12 +47,27 @@ if angular_project then
 end
 
 lspconfig.vtsls.setup {
-  on_attach = function(client)
+  on_attach = function(client, bufnr)
     -- disable vtsls rename in favor of angulars
     if angular_project then
       client.server_capabilities.renameProvider = false
     end
+    -- enable inlay hints for typescript
+    vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
   end,
   on_init = nvlsp.on_init,
   capabilities = nvlsp.capabilities,
+  -- add inlay hints settings
+  settings = {
+    typescript = {
+      inlayHints = {
+        parameterNames = { enabled = "all" },
+        parameterTypes = { enabled = true },
+        variableTypes = { enabled = true },
+        propertyDeclarationTypes = { enabled = true },
+        functionLikeReturnTypes = { enabled = true },
+        enumMemberValues = { enabled = true },
+      },
+    },
+  },
 }

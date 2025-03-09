@@ -7,6 +7,7 @@
 * lua
 * TailwindCSS
 * html + emmet abbreviations
+* Inlay hinting 
 * ... many others!
 
 ### Installation
