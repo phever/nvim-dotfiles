@@ -4,7 +4,7 @@ local options = {
     css = { "prettier" },
     html = { "prettier" },
     htmlangular = { "prettier" },
-    python = { "ruff" },
+    python = { "ruff_fix", "ruff_format" },
     javascript = { "prettier" },
     typescript = { "prettier" },
   },
