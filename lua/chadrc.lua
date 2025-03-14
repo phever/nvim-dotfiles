@@ -6,8 +6,8 @@
 local M = {}
 
 M.base46 = {
-  theme = "chadracula-evondev",
-  theme_toggle = { "chadracula-evondev", "github_light" },
+  theme = "hiberbee",
+  theme_toggle = { "hiberbee", "github_light" },
 
   -- hl_override = {
   -- 	Comment = { italic = true },
@@ -48,7 +48,7 @@ M.nvdash = {
 M.mason = {
   pkgs = {
     "angular-language-server",
-    "vtsls",
+    "shellcheck",
   },
 }
 
