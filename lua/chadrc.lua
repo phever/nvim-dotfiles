@@ -6,8 +6,8 @@
 local M = {}
 
 M.base46 = {
-  theme = "hiberbee",
-  theme_toggle = { "hiberbee", "github_light" },
+  theme = "catppuccin",
+  theme_toggle = { "catppuccin", "github_light" },
 
   -- hl_override = {
   -- 	Comment = { italic = true },
@@ -19,7 +19,7 @@ M.nvdash = {
   load_on_startup = true,
 
   header = {
-    "     What shall we do today?    ",
+    "       Follow the white rabbit. ",
     "",
     "                (`.        ,-,  ",
     "                ` `.    ,;' /   ",

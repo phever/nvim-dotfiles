@@ -6,6 +6,7 @@ local options = {
     htmlangular = { "prettier" },
     python = { "ruff_fix", "ruff_format" },
     javascript = { "prettier" },
+    json = { "prettier" },
     typescript = { "prettier" },
   },
 
