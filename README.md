@@ -3,11 +3,13 @@
 #### Currently supporting:
 * Python (including debugging)
 * Angular
-* typescript (without interfering with each other!)
+* Typescript (without interfering with each other!)
 * lua
 * TailwindCSS
-* html + emmet abbreviations
+* HTML + emmet abbreviations
 * Inlay hinting 
+* Javascript, JSON
+* Bash / shell
 * ... many others!
 
 ### Installation
