@@ -49,6 +49,7 @@ M.mason = {
   pkgs = {
     "angular-language-server",
     "shellcheck",
+    "debugpy",
   },
 }
 
