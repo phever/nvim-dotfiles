@@ -4,6 +4,7 @@ local options = {
     css = { "prettier" },
     html = { "prettier" },
     htmlangular = { "prettier" },
+    htmldjango = { "djlint" },
     python = { "ruff_fix", "ruff_format" },
     javascript = { "prettier" },
     json = { "prettier" },

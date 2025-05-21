@@ -48,6 +48,11 @@ return {
 
   "nvchad/volt", -- optional, needed for theme switcher
 
+  {
+    "OXY2DEV/markview.nvim",
+    lazy = false,
+  },
+
   -- python debug adapters
   {
     "mfussenegger/nvim-dap",
@@ -75,4 +80,5 @@ return {
       require "configs.dap-python"
     end,
   },
+  { import = "nvchad.blink.lazyspec" },
 }
