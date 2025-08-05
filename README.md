@@ -1,7 +1,7 @@
 # Phever's n(eo)vim .config files
 
 #### Currently supporting:
-* Python (including debugging)
+* Python (including debugging) 
 * Angular
 * Typescript (without interfering with each other!)
 * lua
@@ -9,7 +9,8 @@
 * HTML + emmet abbreviations
 * Inlay hinting 
 * Javascript, JSON
-* Bash / shell
+* Bash / shell 
+* Github Copilot Completions + Agent Mode 
 * ... many others!
 
 ### Installation
