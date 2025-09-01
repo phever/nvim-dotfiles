@@ -4,7 +4,7 @@ require("nvchad.configs.lspconfig").defaults()
 local lspconfig = require "lspconfig"
 
 -- lspconfig default servers: https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
-local servers = { "cssls", "ruff", "tailwindcss", "emmet_language_server", "bashls" }
+local servers = { "cssls", "ruff", "tailwindcss", "emmet_language_server", "bashls", "eslint" }
 local nvlsp = require "nvchad.configs.lspconfig"
 
 -- lsps with default config
@@ -70,4 +70,19 @@ lspconfig.vtsls.setup {
       },
     },
   },
+}
+
+local base_on_attach = vim.lsp.config.eslint.on_attach
+lspconfig.eslint.setup {
+  on_attach = function(client, bufnr)
+    if not base_on_attach then
+      return
+    end
+
+    base_on_attach(client, bufnr)
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      buffer = bufnr,
+      command = "LspEslintFixAll",
+    })
+  end,
 }
