@@ -9,6 +9,8 @@ local options = {
     javascript = { "prettier" },
     json = { "prettier" },
     typescript = { "prettier" },
+    javascriptreact = { "eslint_d" },
+    typescriptreact = { "eslint_d" },
   },
 
   format_on_save = {
