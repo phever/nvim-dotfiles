@@ -1,3 +1,17 @@
+-- create a variable to determine if some eslint file is found in the project root
+local eslint_found = vim.fs.root(0, function(name)
+  return name:match "eslint" ~= nil
+end)
+
+-- generally I use prettier, but contribute to some projects that use eslint
+local eslint_prettier = function()
+  if eslint_found then
+    return { "eslint_d" }
+  else
+    return { "prettier" }
+  end
+end
+
 local options = {
   formatters_by_ft = {
     lua = { "stylua" },
@@ -6,11 +20,11 @@ local options = {
     htmlangular = { "prettier" },
     htmldjango = { "djlint" },
     python = { "ruff_fix", "ruff_format" },
-    javascript = { "prettier" },
     json = { "prettier" },
-    typescript = { "prettier" },
-    javascriptreact = { "eslint_d" },
-    typescriptreact = { "eslint_d" },
+    javascript = eslint_prettier(),
+    typescript = eslint_prettier(),
+    javascriptreact = eslint_prettier(),
+    typescriptreact = eslint_prettier(),
   },
 
   format_on_save = {
