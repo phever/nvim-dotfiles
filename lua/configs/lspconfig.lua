@@ -1,20 +1,20 @@
--- load defaults i.e lua_lsp
 local nvlsp = require "nvchad.configs.lspconfig"
-nvlsp.defaults()
+require "lspconfig"
 
-local lspconfig = require "lspconfig"
+-- load defaults i.e lua_lsp
+nvlsp.defaults()
 
 -- lspconfig default servers: https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
 local servers = { "cssls", "ruff", "tailwindcss", "emmet_language_server", "bashls", "eslint" }
-
--- lsps with default config
-for _, lsp in ipairs(servers) do
-  vim.lsp.config(lsp, {
-    on_attach = nvlsp.on_attach,
-    on_init = nvlsp.on_init,
-    capabilities = nvlsp.capabilities,
-  })
-end
+-- lsps with default config -- is automatically enabled via nvlsp.enable()
+-- for _, lsp in ipairs(servers) do
+--   vim.lsp.config(lsp, {
+--     on_attach = nvlsp.on_attach,
+--     on_init = nvlsp.on_init,
+--     capabilities = nvlsp.capabilities,
+--   })
+-- end
+vim.lsp.enable(servers)
 
 -- enable Python typing inlay hints
 vim.lsp.config("basedpyright", {
@@ -33,7 +33,7 @@ vim.lsp.config("basedpyright", {
     },
   },
 })
-servers[#servers + 1] = "basedpyright"
+vim.lsp.enable "basedpyright"
 
 -- If "angular.json" exists
 local angular_project = vim.fs.root(0, "angular.json")
@@ -45,7 +45,7 @@ if angular_project then
     on_init = nvlsp.on_init,
     capabilities = nvlsp.capabilities,
   })
-  servers[#servers + 1] = "angularls"
+  vim.lsp.enable "angularls"
 end
 
 vim.lsp.config("vtsls", {
@@ -73,6 +73,4 @@ vim.lsp.config("vtsls", {
     },
   },
 })
-servers[#servers + 1] = "vtsls"
-
-vim.lsp.enable(servers)
+vim.lsp.enable "vtsls"
