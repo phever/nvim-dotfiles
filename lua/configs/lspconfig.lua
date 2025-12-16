@@ -6,14 +6,6 @@ nvlsp.defaults()
 
 -- lspconfig default servers: https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
 local servers = { "cssls", "ruff", "tailwindcss", "emmet_language_server", "bashls", "eslint" }
--- lsps with default config -- is automatically enabled via nvlsp.enable()
--- for _, lsp in ipairs(servers) do
---   vim.lsp.config(lsp, {
---     on_attach = nvlsp.on_attach,
---     on_init = nvlsp.on_init,
---     capabilities = nvlsp.capabilities,
---   })
--- end
 vim.lsp.enable(servers)
 
 -- enable Python typing inlay hints
