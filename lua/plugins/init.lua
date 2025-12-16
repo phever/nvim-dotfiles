@@ -97,7 +97,7 @@ return {
     branch = "main",
     cmd = "CopilotChat",
     opts = function()
-      require "configs.copilot-chat"
+      return require "configs.copilot-chat"
     end,
     keys = require "configs.copilot-chat-keys",
     config = function(_, opts)
