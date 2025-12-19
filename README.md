@@ -9,8 +9,8 @@
 * HTML + emmet abbreviations
 * Inlay hinting 
 * Javascript, JSON
-* Bash / shell 
-* Github Copilot Completions + Agent Mode 
+* Bash / shell 󰨊
+* Github Copilot Completions + Agent Mode  
 * ... many others!
 
 ### Installation
