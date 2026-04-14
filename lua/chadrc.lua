@@ -47,7 +47,6 @@ M.nvdash = {
 -- add custom lsps
 M.mason = {
   pkgs = {
-    "lua_lsp",
     "angular-language-server",
     "shellcheck",
     "debugpy",
